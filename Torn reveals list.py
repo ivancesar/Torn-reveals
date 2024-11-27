@@ -1,7 +1,8 @@
 import requests
 import json
+import datetime
 
-apikey = input("Enter your api key of at least limited access") #can be replaced with the key like in the next line
+apikey = input("Enter your api key of at least limited access: ") #can be replaced with the key like in the next line
 #apikey = "YOUR KEY GOES HERE"
 spiesurl="https://api.torn.com/user/?selections=reports&key="
 userprofileurl1="https://api.torn.com/user/"
@@ -31,4 +32,6 @@ for report in spies_data['reports']:
         print('  Defense: '+ str(report['report']['defense']))
     if 'total_battlestats' in report['report']:
         print('  Total: '+ str(report['report']['total_battlestats']))
+    dt_object = datetime.datetime.fromtimestamp(report['timestamp']) #converting from timestamp to datetime
+    print(dt_object.strftime("%Y-%m-%d %H:%M:%S")+" TCT")
     print()
