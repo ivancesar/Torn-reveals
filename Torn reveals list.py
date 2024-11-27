@@ -1,12 +1,13 @@
 import requests
 import json
 
-apikey = input("Enter your api key of at least limited access")
+apikey = input("Enter your api key of at least limited access") #can be replaced with the key like in the next line
+#apikey = "YOUR KEY GOES HERE"
 spiesurl="https://api.torn.com/user/?selections=reports&key="
 userprofileurl1="https://api.torn.com/user/"
 userprofileurl2="?selections=profile&key="
 
-response_spies=requests.get(spiesurl+apikey)
+response_spies=requests.get(spiesurl+apikey) #fetches full list of spies
 
 if response_spies.status_code == 200:
     spies_data = response_spies.json()
@@ -14,12 +15,12 @@ else:
     print(f"Request failed with status code {response_spies.status_code}")
 
 for report in spies_data['reports']:
-    response_profile=requests.get(userprofileurl1+str(report['target'])+userprofileurl2+apikey)
+    response_profile=requests.get(userprofileurl1+str(report['target'])+userprofileurl2+apikey) #obtains user name
     if response_profile.status_code == 200:
         profile_data = response_profile.json()
     else:
         print(f"Request failed with status code {response_spies.status_code}")
-    print(profile_data['name']+'['+str(report['target'])+']')
+    print(profile_data['name']+'['+str(report['target'])+']') #lists all of the battle stats from the report
     if 'strength' in report['report']:
         print('  Strength: '+ str(report['report']['strength']))
     if 'speed' in report['report']:
