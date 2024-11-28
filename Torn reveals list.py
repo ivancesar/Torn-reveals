@@ -35,3 +35,4 @@ for report in spies_data['reports']:
     dt_object = datetime.datetime.fromtimestamp(report['timestamp']) #converting from timestamp to datetime
     print(dt_object.strftime("%Y-%m-%d %H:%M:%S")+" TCT")
     print()
+input()
