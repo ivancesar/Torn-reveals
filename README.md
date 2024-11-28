@@ -10,3 +10,6 @@ ___
 Script is using following external libraries:
 
 requests https://pypi.org/project/requests/
+___
+
+For those not technically inclined in dist folder is an exe prepared by me.
